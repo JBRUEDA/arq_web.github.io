@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="ajax.css">
+
+
+<title>Ejercicio de AJAX</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('enviar').addEventListener('click', function () {
+        var URL = document.getElementById('recurso').value;
+        document.getElementById('contenidos').textContent = '';
+        document.getElementById('cabeceras').textContent = '';
+        document.getElementById('estados').textContent = '';
+        document.getElementById('codigo').textContent = '';
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', URL, true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            document.getElementById('estados').textContent = xhr.statusText;
+            document.getElementById('codigo').textContent = xhr.status;
+            document.getElementById('cabeceras').textContent = xhr.getAllResponseHeaders();
+            document.getElementById('contenidos').textContent = xhr.responseText;
+          }
+        };
+        xhr.send();
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+	<h1>Ejercicio de AJAX</h1>
+
+<form action="#">
+    <label>URL:</label>
+    <input type="text" id="recurso" size="70" />
+    <input type="button" id="enviar" value="Mostrar contenidos" />
+  </form>
+
+  <div id="principal">
+    <h2>Contenidos del archivo:</h2>
+    <div id="contenidos"></div>
+
+    <h2>Cabeceras HTTP de la respuesta del servidor:</h2>
+    <div id="cabeceras"></div>
+  </div>
+
+  <div id="secundario">
+    <h2>Estados de la petición:</h2>
+    <div id="estados"></div>
+
+    <h2>Código de estado:</h2>
+    <div id="codigo"></div>
+  </div>
+
+</body>
+</html>
