@@ -100,10 +100,8 @@
     <footer>
         <p>&copy; 2023 Lionel Messi - Sitio Personal</p>
     </footer>
-</body>
-</html>
-<script>
-    $(document).ready(function(){
+    <script>
+	$(document).ready(function(){
         $('.gallery-container').slick({
             slidesToShow: 4,
             slidesToScroll: 1,
@@ -112,6 +110,8 @@
             arrows: true, // Activamos las flechas de navegación
             prevArrow: $('.prev-slide'), // Selector del botón de retroceso
             nextArrow: $('.next-slide') // Selector del botón de avance
+            });
         });
-    });
-</script>
+    </script>
+</body>
+</html>
